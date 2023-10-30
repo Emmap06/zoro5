@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree2</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="../static/initialize.css">
+</head>
+
+<body>
+    
+
+   {% extends './base.html' %}
+   
+   {% block content %}
+    <div class="ajouter">
+                <div class="form">
+                    <h3>Entrez votre magasin</h3> <br><br>
+                    <form action="" method="post">
+                        <label for="name">Nom :</label><br><br><br>
+                        <label for="address">Adresse :</label><br><br><br>
+                        <label for="tel">Téléphone :</label><br><br><br>
+                        <label for="mail">E-mail :</label>
+                    </form>
+                </div>
+                <div class="tex">
+                    <input type="text" id="name" name="name" class="input"><br><br>
+                    <input type="text" id="address" name="address"><br><br>
+                    <input type="text" id="tel" name="tel"><br><br>
+                    <input type="text" id="mail" name="mail"><br><br>
+                    <div class="but">
+                        <a href="/index3/"><button class="but1">Retour</button></a> <a
+                            href="/index5/"><button class="but2">Valider</button></a>
+                    </div>
+                </div>
+            </div>
+    
+   {% endblock content %}
+    
+</body>
+
+</html>
