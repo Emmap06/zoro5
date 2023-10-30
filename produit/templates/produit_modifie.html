@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+            <div class="sec2">
+                <a href="/ajout_produit/">
+                    <div class="but">
+                        <button>AJOUTER</button>
+                    </div>
+                </a>
+                <div class="enre">
+                    <p>Le Produit numéro 5 a été modifié avec succès</p>
+                </div>
+                <div class="ajouter">
+                  
+                    <div class="tab">
+                        <table border="1">
+                            <thead>
+                                <th>id</th>
+                                <th>Nom</th>
+                                <th>Categorie</th>
+                                <th>Prix</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Nom 1</td>
+                                    <td>Categorie 1</td>
+                                    <td>Prix 1</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="#">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="#">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Nom 2</td>
+                                    <td>Categorie 2</td>
+                                    <td>Prix 2</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="#">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="/valid_sup/">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Nom 3</td>
+                                    <td>Categorie 3</td>
+                                    <td>Prix 3</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="#">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="#">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Nom 4</td>
+                                    <td>Categorie 4</td>
+                                    <td>Prix 4</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="#">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="#">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Nom 5</td>
+                                    <td>Categorie 5</td>
+                                    <td>Prix 5</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="/modif_produit/">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="#">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Nom 6</td>
+                                    <td>Categorie 6</td>
+                                    <td>Prix 6</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="#">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="#">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Nom 7</td>
+                                    <td>Categorie 7</td>
+                                    <td>Prix 7</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="#">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="#">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                                <tr class="deux">
+                                    <td>8</td>
+                                    <td>Nouveau</td>
+                                    <td>Nouveau</td>
+                                    <td>Nouveau</td>
+                                    <td>
+                                        <div class="modif">
+                                            <div class="modif1">
+                                                <a href="#">Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href="#">Supprimer</a>
+                                            </div>
+                                        </div>
+                            
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}
+</body>
+
+</html>

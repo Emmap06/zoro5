@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+        <div class="ajouter">
+            <div class="form">
+                <h4>Ajouter le nom de votre magasin</h4> <br><br>
+                <div class="form1">
+                    <form action="" method="post">
+                        <label for="name">Nom :</label><br><br><br><br>
+                        <label for="address">Adresse :</label><br><br><br><br>
+                        <label for="tel">Téléphone :</label><br><br><br><br>
+                        <label for="mail">E-mail :</label>
+                    </form>
+                </div>
+            </div>
+            <div class="tex">
+                <input type="text" class="input"><br>
+                <input type="text" class="input"><br>
+                <input type="tel" class="input"><br>
+                <input type="email" class="input">
+                <div type="text" class="but">
+                    <a href="/list_magasin/"><button class="but1">Retour</button></a> <a
+                        href="/enregistrement_mag/"><button type= "submit" class="but2">Valider</button></a>
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+</body>
+
+</html>

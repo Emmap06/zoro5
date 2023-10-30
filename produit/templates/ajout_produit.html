@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+            <div class="ajouter">
+                <div class="form">
+                    <h4>Ajouter le nom de votre produit</h4> <br><br>
+                    <div class="form1">
+                        <form action="" method="post">
+                            <label for="name">Nom :</label><br><br><br>
+                            <label for="address">Categorie :</label><br><br><br>
+                            <label for="tel">prix :</label><br><br><br><br>
+                        </form>
+                    </div>
+                </div>
+                <div class="tex">
+                    <form action="/enregistrer_prod/" method="post">
+                        <input type="text" class="input">
+                        <input type="text" class="input">
+                        <input type="number" class="input"><br>
+                    </form>
+                    <div class="but">
+                        <a href="/list_produit/"><button class="but1">Retour</button></a> <a
+                            href="/enregistrer_prod/"><button type="submit" class="but2">Valider</button></a>
+                    </div>
+                </div>
+            </div>
+{% endblock content %}
+</body>
+
+</html>

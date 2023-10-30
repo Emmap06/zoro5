@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+        <div class="sec2">
+            <a href="{{url_for('third')}}">
+                <div class="but">
+                    <button>AJOUTER</button>
+                </div>
+            </a>
+            <div class="enre">
+                <p>Le Magasin numéro 5 a été modifié avec succès</p>
+            </div>
+            <div class="ajouter">
+                
+                <div class="tab">
+                    <table border="1">
+                        <thead>
+                            <th>id</th>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Téléphone</th>
+                            <th>Mail</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Magasin 1</td>
+                                <td>Adresse 1</td>
+                                <td>Téléphone 1</td>
+                                <td>Mail 1</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="#">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="#">Supprimer</a>
+                                        </div>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Magasin 2</td>
+                                <td>Adresse 2</td>
+                                <td>Téléphone 2</td>
+                                <td>Mail 2</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="#">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="/sup_magasin/">Supprimer</a>
+                                        </div>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Magasin 3</td>
+                                <td>Adresse 3</td>
+                                <td>Téléphone 3</td>
+                                <td>Mail 3</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="#">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="#">Supprimer</a>
+                                        </div>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Magasin 4</td>
+                                <td>Adresse 4</td>
+                                <td>Téléphone 4</td>
+                                <td>Mail 4</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="#">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="#">Supprimer</a>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            <tr class="deux">
+                                <td>5</td>
+                                <td>Magasin 5</td>
+                                <td>Adresse 5</td>
+                                <td>Téléphone 5</td>
+                                <td>Mail 5</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="/modif_magasin/">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="#">Supprimer</a>
+                                        </div>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Magasin 6</td>
+                                <td>Adresse 6</td>
+                                <td>Téléphone 6</td>
+                                <td>Mail 6</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="#">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="#">Supprimer</a>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Magasin 7</td>
+                                <td>Adresse 7</td>
+                                <td>Téléphone 7</td>
+                                <td>Mail 7</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="#">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="#">Supprimer</a>
+                                        </div>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                            <tr class="un">
+                                <td>8</td>
+                                <td>Magasin 8</td>
+                                <td>Adresse 8</td>
+                                <td>Téléphone 8</td>
+                                <td>Mail 8</td>
+                                <td>
+                                    <div class="modif">
+                                        <div class="modif1">
+                                            <a href="#">Modifier</a>
+                                        </div>
+                                        <div class="modif2">
+                                            <a href="#">Supprimer</a>
+                                        </div>
+                                    </div>
+                                
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
+</body>
+
+</html>
