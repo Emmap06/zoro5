@@ -97,26 +97,36 @@ main {
 .ajouter .tex {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
+    justify-content: center;
+    align-items:center;
+
     margin-top: 39px;
     /* border: blue 1px solid; */
     /* background-color: blue; */
+}
+.form{
+    height: 300px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom :200px;
+    justify-content: space-around;
 }
 
 .tex .input {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     background-color: white;
-    font-size: 15px;
+    font-size: 25px;
     width: 400px;
-    height: 25%;
+    height: 30%;
     color: black;
     border: #5B9BD5 1px solid;
     border-radius: 5px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .tex .input:nth-child(5) {
@@ -512,3 +522,36 @@ header {
     justify-content: center;
     align-items: center;
 }
+
+.flash-messages {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.flash-messages li {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.info {
+    background-color: #2196F3;
+    color: white;
+}
+
+.warning {
+    background-color: #FF9800;
+    color: white;
+}
+
+.danger {
+    background-color: #f44336;
+    color: white;
+}
+
