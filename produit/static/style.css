@@ -481,12 +481,13 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40%;
-    height: 60%;
+    width: 70%;
+    height: 70%;
     background-color: #5B9BD5;
     border-radius: 5px;
     /* border: red 1px solid */
 }
+
 
 .connexion h3 {
     /* text-align: center; */

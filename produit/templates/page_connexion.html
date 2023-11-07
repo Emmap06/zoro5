@@ -29,6 +29,15 @@
                             <input type="text " name="identifiant" placeholder="Identifiant"><br>
                             <input type="password" name="password" placeholder="Mot de passe"> <br>
                             <input type="submit" value="Connexion"> <br>
+                            {% with messages = get_flashed_messages() %}
+                                    {% if messages %}
+                                <ul>
+                                    {% for message in messages %}
+                                         {{ message }}
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            {% endwith %}
                             <a href="{{url_for('nouveau_compte')}}">Si pas de compte Inscrivez-vous</a>
                         </form>
                     </div>

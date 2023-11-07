@@ -39,8 +39,9 @@ def first1():
 
     return(render_template('page_connexion.html'))
 
-@app.route('/nouveau_compte/')
+@app.route('/nouveau_compte', methods=['POST','GET'])
 def nouveau_compte():
+
     return(render_template('nouveau_compte.html'))
 
 @app.route('/accueil/')
