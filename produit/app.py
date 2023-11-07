@@ -35,13 +35,27 @@ def first():
 
 @app.route('/page_connexion', methods=['POST','GET'])
 def first1():
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
 
     return(render_template('page_connexion.html'))
 
 @app.route('/nouveau_compte', methods=['POST','GET'])
 def nouveau_compte():
-
+    if request.method=='POST':
+        identifiant = request.form['nouvel_identifiant']
+        mot_de_passe = request.form['nouveau_mot_de_passe']
+        hashed_password = generate_password_hash(mot_de_passe, method='sha256')
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        try:
+            cursor.execute('INSERT INTO utlisateur (identifiant, mot_pass) VALUES (%s, %s)', (identifiant, hashed_password))
+            mysql.connection.commit()
+            flash('Compte créé avec succès. Vous pouvez maintenant vous connecter.', 'success')
+            return redirect(url_for('first1'))
+        except:
+            mysql.connection.rollback()
+            flash('Cet identifiant existe déjà. Choisissez un autre.', 'danger')
+        finally:
+            cursor.close()
+        return redirect(url_for('nouveau_compte'))
     return(render_template('nouveau_compte.html'))
 
 @app.route('/accueil/')

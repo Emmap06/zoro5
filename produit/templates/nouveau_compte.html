@@ -26,10 +26,12 @@
                 <div class="connec">
                     <div class="connexion">
                         <h3>Création de nouveau compte</h3>
-                        <form action="" method="post">
-                            <input type="text " name="id" placeholder="Identifiant"><br>
-                            <input type="text" name="mot" placeholder="Mot de passe"> <br>
-                            <a href="#"><input type="button" value="Créer votre compte"></a>
+                        <form action="{{url_for('nouveau_compte')}}" method="post">
+                            <label for="id"> Entrez votre identifiant</label>
+                            <input type="text " name="nouvel_identifiant" placeholder="Identifiant"><br>
+                            <label for="id"> Entrez votre mot de passe </label>
+                            <input type="password" name="nouveau_mot_de_passe" placeholder="Mot de passe"> <br>
+                            <input type="submit" value="Créer votre compte">
                         </form>
                     </div>
                 </div>
