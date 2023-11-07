@@ -12,6 +12,10 @@ header {
     width: 100%;
 }
 
+.main2 h1{
+    text-align : center;
+}
+
 
 .section1 {
     height: 100%;
@@ -113,6 +117,15 @@ main {
     margin-bottom :200px;
     justify-content: space-around;
 }
+.form-mode{
+    height: 300px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom :200px;
+    justify-content: space-around;
+}
 
 .tex .input {
     display: flex;
@@ -120,7 +133,21 @@ main {
     justify-content: center;
     align-items: end;
     background-color: white;
-    font-size: 25px;
+    font-size: 20px;
+    width: 400px;
+    height: 30%;
+    color: black;
+    border: #5B9BD5 1px solid;
+    border-radius: 5px;
+    margin-top: 40px;
+}
+.tex .select {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+    background-color: white;
+    font-size: 20px;
     width: 400px;
     height: 30%;
     color: black;
@@ -167,6 +194,7 @@ main {
     border-radius: 5px;
     width: 100px;
     height: 40px;
+    text-align : center;
 }
 
 .but .but2 {
@@ -229,7 +257,7 @@ main {
 
 .sec2 button {
     /* top: 50%; */
-    left: 1000px;
+    left: 200px;
     width: 150%;
     height: 100%;
     background-color: yellowgreen;
@@ -238,7 +266,8 @@ main {
 
 .sec2 .but {
     /* margin-top: 50px; */
-    margin-left: 1000px;
+    margin-left: 200px;
+    margin-top : 10px
 }
 
 .sec2 .enre {
@@ -553,5 +582,7 @@ header {
 .danger {
     background-color: #f44336;
     color: white;
+}
+select option{
 }
 

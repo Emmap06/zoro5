@@ -1,0 +1,40 @@
+
+    {% extends './base.html' %}
+
+    {% block content %}
+        <div class="ajouter">
+            <div class="form">
+                <h4>Ajouter la vente</h4> <br><br>
+                <div class="form1">
+                    <form action='/ajout_vente' method="post">
+                        <label for="Nom_magasin">Nom magasin :</label><br><br><br><br>
+                        <label for="Nom_produit">Nom produit :</label><br><br><br><br>
+                        <label for="quantite">Quantite :</label><br><br><br><br>
+                        <label for="Date">Date :</label><br><br><br><br>
+                    </form>
+                </div>
+            </div>
+            <form class="tex" action='/ajout_vente' method="post">
+            <div class="tex">
+                <select name="magasin" id="magasin" class="input" required >
+                    <option value="">Selectionnez un magasin</option>
+                    {% for magasin in magasins %}
+                        <option value="{{ magasin[0] }}">{{magasin[1]}}</option>
+                    {% endfor %}
+                </select>
+                <select name="produit" id="produit" class="input" required>
+                    <option value="">Selectionnez un produit</option>
+                    {% for produit in produits %}
+                        <option value="{{ produit[0] }}">{{ produit[1]}}</option>
+                    {% endfor %}
+                </select>
+                <input type="number" class="input" name="quantite" required><br>
+                <input type="date" class="input" name="date"><br>
+                <div type="text" class="but">
+                    <a href="/liste_vente/" class="but1">Retour</a>
+                    <button type= "submit" class="but2">Valider</button>
+                </div>
+            </div>
+            </form>
+        </div>
+{% endblock content %}

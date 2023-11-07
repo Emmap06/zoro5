@@ -1,40 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>entree2</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
-</head>
-
-<body>
     {% extends './base.html' %}
     
     {% block content %}
             <div class="ajouter">
-                <div class="form">
+                <div class="form-mode">
                     <h3>Modifier un magasin</h3> <br><br>
-                    <div class="form1"><form action="" method="post">
-                        <label for="name">Nom :</label> <br><br><br>
-                        <label for="address">Categorie :</label><br><br>
-                        <label for="tel">Prix :</label><br><br><br>
-                    </form></div>
-                </div>
-                <div class="tex">
-                    <form action="/enregistrer_prod/" method="post">
-                        <input type="text" class="input" placeholder="Produit 5">
-                        <input type="text" class="input" placeholder="Categorie 5">
-                        <input type="number" class="input" placeholder="Prix P"><br>
-                    </form>
-                    <div class="but">
-                        <a href="/list_produit/"><button class="but1">Retour</button></a> <a
-                            href="/produit_modifie/"><button type="submit" class="but2">Valider</button></a>
-                    </div>
+                     <div class="form1">
+                    <label for="name">Nom :</label>
+                    <label for="address">Catégorie :</label>
+                    <label for="tel">Description :</label>
+                    <label for="mail">Prix unitaire :</label>
                 </div>
             </div>
+        <form action="{{ url_for('nineth', id=elements[0])}}" method="POST"  >
+            <div class="tex">
+                    <input type="hidden" class="input" value="{{elements[0]}}" name="id">
+                    <input type="text" class="input" value="{{elements[1]}}" name="nom">
+                   <select class="select" name="categorie" id="liste-deroulante">
+                          <option value="{{elements[2]}}" selected >{{elements[2]}}</option>
+                          <option value="Accesoires">Accesoires</option>
+                          <option value="Aliments">Aliments</option>
+                          <option value="Vetements">Vetements</option>
+                    </select>
+                    <input type="text" class="input" value="{{elements[3]}}" name="description">
+                    <input type="number" class="input" value="{{elements[4]}}" name="prix">
+                <div class="but">
+                    <a href="/list_magasin/"><button class="but1">Retour</button></a>
+                    <button type="submit" class="but2">Valider</button>
+                </div>
+            </div>
+        </form>
 {% endblock content %}
-</body>
-
-</html>

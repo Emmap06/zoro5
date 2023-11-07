@@ -7,8 +7,8 @@
     <title>wireframe</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
-    
-    
+
+
 </head>
 
 <body>
@@ -19,17 +19,17 @@
                 <p>ZORO</p>
             </div>
         </section>
-
         <main class="main2">
+            <h1>BIENVENU DANS VOTRE GESTION DE MAGASIN. COMMENCER AVEC NOUVEAU COMPTE</h1>
             <section class="section3">
                 <div class="connec">
                     <div class="connexion">
-                        <h3>Connectez-vous</h3>
-                        <form action="{{url_for('first')}}" method="post">
-                            <input type="text " name="identifiant" placeholder="Identifiant"><br>
-                            <input type="password" name="password" placeholder="Mot de passe"> <br>
-                            <input type="submit" value="Connexion"> <br>
-                            <a href="{{url_for('nouveau_compte')}}">Si pas de compte Inscrivez-vous</a>
+                        <h3>Création de nouveau compte</h3>
+                        <form action="" method="post">
+                            <input type="text " name="id" placeholder="Identifiant"><br>
+                            <input type="text" name="mot" placeholder="Mot de passe"> <br>
+                            <a href="#"><input type="button" value="Créer votre compte"></a>
+                            <a href="#">Si pas de compte Inscrivez-vous</a>
                         </form>
                     </div>
                 </div>

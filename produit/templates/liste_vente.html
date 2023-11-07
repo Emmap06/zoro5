@@ -1,38 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>entree4</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
-</head>
-
-<body>
     {% extends './base.html' %}
     
     {% block content %}
             <div class="sec2">
-                <a href="{{url_for('seventh')}}">
+                <a href="{{url_for('ajout_vente')}}">
                     <div class="but">
                         <button>AJOUTER</button>
                     </div>
                 </a>
-                <div class="enre">
-                    <p>Votre produit a été enregistré avec succès</p>
-                </div>
                 <div class="ajouter">
-                  
                     <div class="tab">
-                       <table border="1">
-                            <caption>Liste des Produits</caption>
+                        <table border="1">
+                            <caption>Liste des Ventes</caption>
                                 <thead>
-                                    <th>id</th>
-                                    <th>Nom</th>
-                                    <th>Categorie</th>
-                                    <th>Description</th>
-                                    <th>Prix unitaire</th>
+                                    <th>id_Vente</th>
+                                    <th>Date_Vente</th>
+                                    <th>Id_Magasin</th>
+                                    <th>Id_Produit</th>
+                                    <th>Quantites</th>
+                                    <th>Montant_total</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
@@ -43,13 +29,14 @@
                                     <td>{{ list[2] }}</td>
                                     <td>{{ list[3] }}</td>
                                     <td>{{ list[4] }}</td>
+                                    <td>{{ list[5] }}</td>
                                     <td>
                                         <div class="modif" >
                                             <div class="modif1">
-                                                <a href='/modif_produit/{{ list[0]}}'>Modifier</a>
+                                                <a href='#'>Modifier</a>
                                             </div>
                                             <div class="modif2">
-                                                <a href='/valid_sup/{{ list[0]}}'>Supprimer</a>
+                                                <a href='#'>Supprimer</a>
                                             </div>
                                         </div>
                                     </td>
@@ -61,6 +48,3 @@
                 </div>
             </div>
 {% endblock content %}
-</body>
-
-</html>

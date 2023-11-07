@@ -1,7 +1,7 @@
 from flask import Flask, render_template,request, url_for, redirect,flash
 from flask_mysql_connector import MySQL
 import MySQLdb.cursors
-
+from werkzeug.security import generate_password_hash,check_password_hash
 
 app = Flask(__name__)
 
@@ -15,19 +15,39 @@ app.config['MYSQL_DATABASE'] = "gestion_magasin"
 
 mysql = MySQL(app)
 
-@app.route('/')
+@app.route('/', methods=['POST','GET'])
 def first():
+    if request.method == 'POST':
+        username = request.form['identifiant']
+        password = request.form['password']
+        print("BIENVENU", username)
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT mot_pass FROM utlisateur WHERE identifiant = %s', (username,))
+        user = cursor.fetchone()
+        cursor.close()
+        if user and check_password_hash(user[0], password):
+            flash('Connexion réussie', 'success')
+            return redirect(url_for('sixth'))
+        else:
+            flash('Identifiant ou mot de passe incorrect', 'danger')
+        return redirect(url_for('first'))
     return(render_template('page_connexion.html'))
 
-@app.route('/page_connexion/')
+@app.route('/page_connexion', methods=['POST','GET'])
 def first1():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+
     return(render_template('page_connexion.html'))
+
+@app.route('/nouveau_compte/')
+def nouveau_compte():
+    return(render_template('nouveau_compte.html'))
 
 @app.route('/accueil/')
 def sixth():
     return(render_template('accueil.html'))
 
-@app.route('/list_magasin/')
+@app.route('/list_magasin/', methods=['POST','GET'])
 def second():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("SELECT * FROM magasin")
@@ -50,7 +70,6 @@ def third():
         mysql.connection.commit()
         cursor.close()
         return redirect(url_for("fourth"))
-    flash('Modification réussie !', 'success')
     return render_template("ajout_mag.html")
 
 @app.route('/enregistrement_mag/')
@@ -106,23 +125,68 @@ def fifth4():
 
 @app.route('/list_produit/')
 def sixth2():
-    return(render_template("list_produit.html"))
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT * FROM produit")
+    listes = cursor.fetchall()
+    cursor.close()
+    return render_template('list_produit.html', listes=listes)
 
-@app.route('/ajout_produit/')
+
+@app.route('/ajout_produit', methods=['POST', 'GET'])
 def seventh():
-    return(render_template("ajout_produit.html"))
+    if request.method == 'POST':
+
+        nom = request.form['nom']
+        categorie = request.form['categorie']
+        description= request.form['description']
+        prix = request.form['prix']
+
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor )
+        cursor.execute("INSERT INTO produit (NomProduit,Categorie,Description,prixUnitaire) VALUES (%s, %s,%s, %s)", (nom,categorie,description,prix))
+        mysql.connection.commit()
+        cursor.close()
+        return redirect(url_for("eight"))
+    return render_template("ajout_produit.html")
+
 
 @app.route('/enregistrer_prod/')
 def eight():
-    return(render_template("enregistrer_prod.html"))
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT * FROM produit")
+    listes = cursor.fetchall()
+    cursor.close()
+    return render_template('enregistrer_prod.html', listes=listes)
 
-@app.route('/modif_produit/')
-def nineth():
-    return(render_template("modif_produit.html"))
+@app.route('/modif_produit/<int:id>', methods=['GET', 'POST'])
+def nineth(id):
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    requete = "SELECT * FROM produit WHERE produitid = %s"
+    cursor.execute(requete, (id,))
+    elements = cursor.fetchone()
+    cursor.close()
+
+    if request.method == 'POST':
+        id = request.form['id']
+        nouveau_nom = request.form['nom']
+        nouvel_categorie = request.form['categorie']
+        nouveau_description = request.form['description']
+        nouvel_prix = request.form['prix']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute(
+            "UPDATE produit SET ProduitID=%s,  nomproduit = %s, categorie = %s, description = %s, prixunitaire = %s WHERE produitID = %s",
+            (id, nouveau_nom, nouvel_categorie, nouveau_description, nouvel_prix, id))
+        mysql.connection.commit()
+        cursor.close()
+        return redirect(url_for('tenth'))
+    return (render_template("modif_produit.html", elements=elements))
 
 @app.route('/produit_modifie/')
 def tenth():
-    return(render_template("produit_modifie.html"))
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT * FROM produit")
+    listes = cursor.fetchall()
+    cursor.close()
+    return render_template('produit_modifie.html', listes=listes)
 
 @app.route('/valid_sup/<int:id>', methods=['GET', 'POST'])
 def eleventh(id):
@@ -133,7 +197,7 @@ def eleventh(id):
     if request.method == 'POST':
         cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
         cursor.execute("DELETE FROM magasin WHERE magasinid = %s", (id,))
-        mysql.connection.commit()
+        mysql.connection.commit(  )
         cursor.close()
         return redirect(url_for('fifth4'))
 
@@ -144,5 +208,53 @@ def eleventh(id):
 def twelveth():
     return(render_template("effectue.html"))
 
+
+@app.route('/liste_vente/')
+def vente():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT * FROM vente")
+    listes = cursor.fetchall()
+    cursor.close()
+    return render_template('liste_vente.html', listes=listes)
+
+@app.route('/ajout_vente', methods=['POST', 'GET'])
+def ajout_vente():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT ProduitID, NomProduit FROM Produit')
+    produits = cursor.fetchall()
+    print(produits)
+    cursor.execute('SELECT MagasinID, NomMagasin FROM Magasin')
+    magasins = cursor.fetchall()
+    print(magasins)
+    cursor.close()
+
+    if request.method == 'POST':
+        mag = request.form["magasin"]
+        pro = request.form["produit"]
+        quantite = request.form["quantite"]
+        date = request.form["date"]
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT PrixUnitaire FROM Produit WHERE ProduitID = %s', (pro,))
+        produit = cursor.fetchone()
+
+        if produit:
+            prix_unitaire = produit[0]
+            montant_total = float(prix_unitaire) * int(quantite)
+
+            # Enregistrement de la vente dans la base de données
+            cursor.execute(
+                'INSERT INTO Vente (DateVente, MagasinID, ProduitID, QuantiteVendue, MontantTotal) VALUES (%s, %s, %s, %s, %s)',
+                (date, mag, pro, quantite, montant_total))
+            mysql.connection.commit()
+            flash('Vente ajoutée avec succès', 'success')
+            cursor.close()
+            return redirect(url_for('vente'))
+        else:
+            flash('Produit non trouvé', 'danger')
+            cursor.close()
+            return redirect(url_for('ajout_vente'))
+    return render_template('ajout_vente.html', produits=produits, magasins=magasins)
+
 if __name__ == '__main__':
+    app.secret_key = 'message'
     app.run(debug=True)
