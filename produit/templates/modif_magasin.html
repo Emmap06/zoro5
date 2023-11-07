@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+        <div class="ajouter">
+            <div class="form">
+                <h3>Modifier un magasin</h3> <br><br>
+                <div class="form1">
+                    <label for="name">Nom :</label><br><br><br><br>
+                    <label for="address">Adresse :</label><br><br><br><br>
+                    <label for="tel">Téléphone :</label><br><br><br><br>
+                    <label for="mail">E-mail :</label>
+                </div>
+            </div>
+        <form action="{{ url_for('fifth1', id=elements[0])}}" method="POST"  >
+            <div class="tex">
+<!--                    <input type="text" class="input">Magasin 5</input><br>-->
+<!--                    <input type="text" class="input">Addresse 5</input><br>-->
+<!--                    <input type="tel" class="input">Téléphone M</input><br>-->
+<!--                    <input type="email" class="input">Mail 5</input>-->
+                <input type="hidden" class="input" value="{{elements[0]}}" name="id">
+                <input type="text" class="input" value="{{elements[1]}}" name="nom">
+                <input type="text" class="input" value="{{elements[2]}}" name="adresse">
+                <input type="tel" class="input" value="{{elements[3]}}" name="telephone">
+                <input type="email" class="input" value="{{elements[4]}}" name="email">
+                <div class="but">
+                    <a href="/list_magasin/"><button class="but1">Retour</button></a>
+                    <button type="submit" class="but2">Valider</button></a>
+                </div>
+            </div>
+        </form>
+        </div>
+    {% endblock content %}
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree3</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+            <div class="sec3">
+                <h4>Suppression de produit </h4>
+                <!-- <div class="sup"> -->
+                <div class="sup">
+                    <div class="sup1">
+                        <p class="sup2">Vous êtes sur le point de supprimer un produit. Êtes vous</p>
+                        <p class="sup2">sûr de vouloir continuer?</p>
+                    </div>
+                    <div class="but">
+                        <a href="/list_produit/"><button class="but1">Retour</button></a>
+                        <button type="submit" class="but2">Confirmer</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- </div> -->
+            </div>
+
+{% endblock content %}
+</body>
+
+</html>

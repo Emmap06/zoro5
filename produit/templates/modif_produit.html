@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+            <div class="ajouter">
+                <div class="form">
+                    <h3>Modifier un magasin</h3> <br><br>
+                    <div class="form1">
+                        <label for="name">Nom :</label> <br><br><br>
+                        <label for="address">Categorie :</label><br><br>
+                        <label for="tel">Prix :</label><br><br><br>
+                    </div>
+                </div>
+            <form action="{{ url_for('nineth', id=elements[0])}}" method="POST"  >
+                <div class="tex">
+                        <input type="text" class="input" placeholder="Produit 5">
+                        <input type="text" class="input" placeholder="Categorie 5">
+                        <input type="number" class="input" placeholder="Prix P"><br>
+                    <div class="but">
+                        <a href="/list_produit/"><button class="but1">Retour</button></a> <a
+                            href="/produit_modifie/"><button type="submit" class="but2">Valider</button></a>
+                    </div>
+                </div>
+            </form>
+            </div>
+{% endblock content %}
+</body>
+
+</html>

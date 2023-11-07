@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>entree4</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'initialize.css') }}" />
+</head>
+
+<body>
+    {% extends './base.html' %}
+    
+    {% block content %}
+        <div class="sec2">
+            <a href="{{url_for('third')}}">
+                <div class="but">
+                    <button>AJOUTER</button>
+                </div>
+            </a>
+            <div class="enre">
+                <p>Le Magasin a été modifié avec succès</p>
+            </div>
+            <div class="ajouter">
+                
+                <div class="tab">
+                    <table border="1">
+                        <thead>
+                            <th>id</th>
+                            <th>Nom</th>
+                            <th>Adresse</th>
+                            <th>Téléphone</th>
+                            <th>Mail</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            {% for list in listes %}
+                                <tr>
+                                    <td>{{ list[0] }}</td>
+                                    <td>{{ list[1] }}</td>
+                                    <td>{{ list[2] }}</td>
+                                    <td>{{ list[3] }}</td>
+                                    <td>{{ list[4] }}</td>
+                                    <td>
+                                        <div class="modif" >
+                                            <div class="modif1">
+                                                <a href='/modif_magasin/{{ list[0]}}'>Modifier</a>
+                                            </div>
+                                            <div class="modif2">
+                                                <a href='/sup_magasin/{{ list[0]}}'>Supprimer</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+{% endblock content %}
+</body>
+
+</html>
